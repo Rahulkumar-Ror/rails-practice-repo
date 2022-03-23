@@ -1,0 +1,45 @@
+<div class="container my-3">
+<div class="row justify-content-center">
+<div class="col-19 my-4">
+<div class="card text-center shadow mb-5 bg-light">
+<h2><mark>Student Details</mark></h2>
+
+<%= form_with model: @student do |form| %>
+
+<div>
+  <%= form.label :Student_name %><br>
+  <%= form.text_field :student_name, placeholder: "Enter a name", class: "form-control" %>
+</div>
+
+<div>
+  <%= form.label :email %><br>
+  <%= form.text_area :email, placeholder: "test@gmail.com", class: "form-control" %>
+
+</div>
+
+<div>
+  <%= form.label :phone %><br>
+  <%= form.number_field :phone, class: "form-control" %>
+</div>
+
+<div>
+  <%= form.label :dob %><br>
+  <%= form.date_field :dob, class: "form-control" %>
+</div>
+
+<div>
+<%= form.label :student_pic %>
+<%= form.file_field :student_pic, class: "form-control" %>
+</div>
+
+<div>
+<%= form.label :student_resume %>
+<%= form.file_field :student_resume, class: "form-control" %>
+</div>
+<hr>
+<center>
+<div>
+  <%= form.submit class: "btn btn-secondary my-4" %>
+</div>
+</center>
+<% end %>
