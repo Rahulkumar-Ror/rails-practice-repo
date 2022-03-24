@@ -15,8 +15,18 @@
         <th><b><u>D.O.B:</u></th></b><br/>
         <td><%= @student.dob %></th><br/>
 				<th><b><u>Photo:</u></th></b><br/>
-        <td><%= @student.student_pic %></th><br/>
-        <th><b><u>Photo:</u></th></b><br/>
+        <% if @student.student_pic.attached? %>
+        <td><%= image_tag @student.student_pic, width: "100%", height: "100%" %></th><br/><br/>
+        <% end %>
+        <br/><br/>
+        <th><b><u>Images:</u></th></b><br/>
+        <% if @student.student_pic.attached? %>
+          <% @student.images.each do |image| %>
+            <%= image_tag image, width: "100px" %><hr>
+          <% end %>
+        <% end %>
+        <br/><br/>
+        <th><b><u>Resume:</u></th></b><br/>
         <td><%= @student.student_resume %></th><br/>				
       </div>
     </div>

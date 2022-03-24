@@ -2,6 +2,11 @@
 <div class="row justify-content-center">
 <div class="col-19 my-4">
 <div class="card text-center shadow mb-5 bg-light">
+<% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+            <p style = "color:red"><%= error %></p>
+        <% end %>
+    <% end %>
 <h2><mark>Student Details</mark></h2>
 
 <%= form_with model: @student do |form| %>
@@ -27,9 +32,14 @@
   <%= form.date_field :dob, class: "form-control" %>
 </div>
 
-<div>
-<%= form.label :student_pic %>
-<%= form.file_field :student_pic, class: "form-control" %>
+<div class="align-left">
+<%= form.label :student_pic %><br/>
+<%= form.file_field :student_pic, accept: "image/jpeg,image/gif,image/png" %>
+</div>
+
+<div class="align-left">
+<%= form.label :images %><br/>
+<%= form.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png" %>
 </div>
 
 <div>
@@ -43,3 +53,20 @@
 </div>
 </center>
 <% end %>
+
+
+<script type="text/javascript">
+
+$('#student_student_pic').bind('change', function() {
+
+var size_in_megabytes = this.files[0].size/1024/1024;
+
+if (size_in_megabytes > 5) {
+
+alert('Maximum file size is 5MB.');
+
+}
+
+});
+
+</script>

@@ -1,5 +1,6 @@
 require_relative "boot"
-
+require "fog/core"
+Fog::Logger[:deprecation] = nil
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
