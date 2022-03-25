@@ -34,12 +34,12 @@
 
 <div class="align-left">
 <%= form.label :student_pic %><br/>
-<%= form.file_field :student_pic, accept: "image/jpeg,image/gif,image/png" %>
+<%= form.file_field :student_pic, accept: "image/jpeg,image/gif,image/png", direct_upload: true %>
 </div>
 
 <div class="align-left">
 <%= form.label :images %><br/>
-<%= form.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png" %>
+<%= form.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png", direct_upload: true %>
 </div>
 
 <div>

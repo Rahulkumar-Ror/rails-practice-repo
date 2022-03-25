@@ -7,6 +7,12 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
   end
 
+  def purge_avatar
+    @student = Student.find(params[:id])
+    @student.student_pic.purge
+    redirect_back fallback_location: root_path, notice: "success"
+  end
+
   def new
     @student = Student.new
   end

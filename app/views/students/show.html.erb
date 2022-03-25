@@ -17,12 +17,15 @@
 				<th><b><u>Photo:</u></th></b><br/>
         <% if @student.student_pic.attached? %>
         <td><%= image_tag @student.student_pic, width: "100%", height: "100%" %></th><br/><br/>
+        <%= link_to "Delete Avatar", purge_avatar_student_path(@student), method: :delete %>
         <% end %>
         <br/><br/>
         <th><b><u>Images:</u></th></b><br/>
         <% if @student.student_pic.attached? %>
-          <% @student.images.each do |image| %>
-            <%= image_tag image, width: "100px" %><hr>
+          <% @student.images.each do |attachment| %>
+          <%= attachment %>
+          <%= link_to "Delete attachment", purge_attachment_path(attachment), method: :delete %>
+            <%= image_tag attachment, width: "100px" %><hr>
           <% end %>
         <% end %>
         <br/><br/>
