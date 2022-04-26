@@ -1,0 +1,64 @@
+<%= form_with(model: student) do |form| %>
+  <% if student.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+        <% student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :age, style: "display: block" %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :dob, style: "display: block" %>
+    <%= form.number_field :dob %>
+  </div>
+  <div>
+<%= form.select :first_name, ["Berlin", "Chicago", "Madrid"] %>
+<%= form.select :first_name, [["Berlin", "BE"], ["Chicago", "CHI"], ["Madrid", "MD"]] %>
+</div>
+
+<div>
+<%= form.select :city, [["Berlin", "BE"], ["Chicago", "CHI"], ["Madrid", "MD"]], selected: "CHI" %>
+</div>
+
+<div>
+
+<%= form.time_zone_select :time_zone %>
+<%= select_year 1999, prefix: "party" %>
+<%= form.collection_select :first_name, Student.order(:first_name), :id, :first_name %>
+<%= form.file_field :picture %>
+<%= form.collection_radio_buttons :first_name, Student.order(:first_name), :id, :first_name %>
+</div>
+  <div>
+
+    <%= form.submit %>
+  </div>
+<% end %>
+<%= form_with url: "/students", method: :get do |form| %>
+  <%= form.label :first_name, "Search for:" %>
+  <%= form.text_field :first_name %>
+  <%= form.submit "Search" %>
+<% end %>

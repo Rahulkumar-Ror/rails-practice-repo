@@ -1,0 +1,2 @@
+class Nee < ApplicationRecord
+end

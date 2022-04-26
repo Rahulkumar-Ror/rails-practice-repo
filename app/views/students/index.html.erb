@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Students</h1>
+
+<div id="students">
+  <% @students.each do |student| %>
+    <%= render student %>
+    <p>
+      <%= link_to "Show this student", student %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New student", new_student_path %>
+<%= form_with url: "/students", method: :get do |form| %>
+  <%= form.label :first_name, "Search for:" %>
+  <%= form.text_field :first_name %>
+  <%= form.submit "Search" %>
+<% end %>
